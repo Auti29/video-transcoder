@@ -2,9 +2,14 @@ import { GetObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3
 import dotenv from "dotenv";
 import path, { resolve } from "node:path";
 import fs from "node:fs";
-import { pipeline, type Readable } from "node:stream";
+import { type Readable } from "node:stream";
+import { pipeline } from "node:stream/promises";
 import ffmpeg from "fluent-ffmpeg";
+import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
 import { Resolutions } from "./utils.js";
+
+ffmpeg.setFfmpegPath(ffmpegInstaller.path);
+
 dotenv.config();
 
 
@@ -33,7 +38,7 @@ async function pullAndTranscodeVideo({jobId, key}){
     if(!jobId || !key) return;
     
     const getCmd = new GetObjectCommand({
-        Bucket: BUCKET!, 
+        Bucket: RAW_VIDEOS_BUCKET!, 
         Key: `videos/${jobId}.mp4`
     });
 
@@ -67,7 +72,7 @@ async function pullAndTranscodeVideo({jobId, key}){
                     try {
                     const fileStream = fs.createReadStream(outPath);
                     const putCmd = new PutObjectCommand({
-                        Bucket: RAW_VIDEOS_BUCKET!,
+                        Bucket: BUCKET!,
                         Key: `videos/${jobId}/output_${resolution.name}p.mp4`,
                         Body: fileStream,
                         ContentType: 'video/mp4',
