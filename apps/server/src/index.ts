@@ -19,7 +19,7 @@ app.use(cors());
 
 app.get('/presign-upload', async (req: Request, res: Response) => {
     const jobId = uuidv4();
-    const key = `${jobId}.mp4`;
+    const key = `videos/${jobId}.mp4`;
 
     try{
     const command = new PutObjectCommand({
