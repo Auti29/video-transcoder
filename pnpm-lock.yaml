@@ -66,9 +66,6 @@ importers:
       '@types/cors':
         specifier: ^2.8.19
         version: 2.8.19
-      '@types/dotenv':
-        specifier: ^8.2.3
-        version: 8.2.3
       '@types/express':
         specifier: ^5.0.5
         version: 5.0.5
@@ -81,6 +78,9 @@ importers:
       express:
         specifier: ^5.1.0
         version: 5.1.0
+      redis:
+        specifier: ^5.9.0
+        version: 5.9.0
       uuid:
         specifier: ^13.0.0
         version: 13.0.0
@@ -616,6 +616,34 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
+  '@redis/bloom@5.9.0':
+    resolution: {integrity: sha512-W9D8yfKTWl4tP8lkC3MRYkMz4OfbuzE/W8iObe0jFgoRmgMfkBV+Vj38gvIqZPImtY0WB34YZkX3amYuQebvRQ==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@redis/client': ^5.9.0
+
+  '@redis/client@5.9.0':
+    resolution: {integrity: sha512-EI0Ti5pojD2p7TmcS7RRa+AJVahdQvP/urpcSbK/K9Rlk6+dwMJTQ354pCNGCwfke8x4yKr5+iH85wcERSkwLQ==}
+    engines: {node: '>= 18'}
+
+  '@redis/json@5.9.0':
+    resolution: {integrity: sha512-Bm2jjLYaXdUWPb9RaEywxnjmzw7dWKDZI4MS79mTWPV16R982jVWBj6lY2ZGelJbwxHtEVg4/FSVgYDkuO/MxA==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@redis/client': ^5.9.0
+
+  '@redis/search@5.9.0':
+    resolution: {integrity: sha512-jdk2csmJ29DlpvCIb2ySjix2co14/0iwIT3C0I+7ZaToXgPbgBMB+zfEilSuncI2F9JcVxHki0YtLA0xX3VdpA==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@redis/client': ^5.9.0
+
+  '@redis/time-series@5.9.0':
+    resolution: {integrity: sha512-W6ILxcyOqhnI7ELKjJXOktIg3w4+aBHugDbVpgVLPZ+YDjObis1M0v7ZzwlpXhlpwsfePfipeSK+KWNuymk52w==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@redis/client': ^5.9.0
+
   '@smithy/abort-controller@4.2.5':
     resolution: {integrity: sha512-j7HwVkBw68YW8UmFRcjZOmssE77Rvk0GWAIN1oFBhsaovQmZWYCIcGa9/pwRB0ExI8Sk9MWNALTjftjHZea7VA==}
     engines: {node: '>=18.0.0'}
@@ -844,10 +872,6 @@ packages:
   '@types/cors@2.8.19':
     resolution: {integrity: sha512-mFNylyeyqN93lfe/9CSxOGREz8cpzAhH+E93xJ4xWQf62V8sQ/24reV2nyzUWM6H6Xji+GGHpkbLe7pVoUEskg==}
 
-  '@types/dotenv@8.2.3':
-    resolution: {integrity: sha512-g2FXjlDX/cYuc5CiQvyU/6kkbP1JtmGzh0obW50zD7OKeILVL0NSpPWLXVfqoAGQjom2/SLLx9zHq0KXvD6mbw==}
-    deprecated: This is a stub types definition. dotenv provides its own type definitions, so you do not need this installed.
-
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
@@ -1059,6 +1083,10 @@ packages:
 
   client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
+
+  cluster-key-slot@1.1.2:
+    resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
+    engines: {node: '>=0.10.0'}
 
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
@@ -1803,6 +1831,10 @@ packages:
   react@19.2.0:
     resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
     engines: {node: '>=0.10.0'}
+
+  redis@5.9.0:
+    resolution: {integrity: sha512-E8dQVLSyH6UE/C9darFuwq4usOPrqfZ1864kI4RFbr5Oj9ioB9qPF0oJMwX7s8mf6sPYrz84x/Dx1PGF3/0EaQ==}
+    engines: {node: '>= 18'}
 
   reflect.getprototypeof@1.0.10:
     resolution: {integrity: sha512-00o4I+DVrefhv+nX0ulyi3biSHCPDe+yLv5o/p6d/UVlirijB8E16FtfwSAi4g3tcqrQ4lRAqQSoFEZJehYEcw==}
@@ -2798,6 +2830,26 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
+  '@redis/bloom@5.9.0(@redis/client@5.9.0)':
+    dependencies:
+      '@redis/client': 5.9.0
+
+  '@redis/client@5.9.0':
+    dependencies:
+      cluster-key-slot: 1.1.2
+
+  '@redis/json@5.9.0(@redis/client@5.9.0)':
+    dependencies:
+      '@redis/client': 5.9.0
+
+  '@redis/search@5.9.0(@redis/client@5.9.0)':
+    dependencies:
+      '@redis/client': 5.9.0
+
+  '@redis/time-series@5.9.0(@redis/client@5.9.0)':
+    dependencies:
+      '@redis/client': 5.9.0
+
   '@smithy/abort-controller@4.2.5':
     dependencies:
       '@smithy/types': 4.9.0
@@ -3153,10 +3205,6 @@ snapshots:
     dependencies:
       '@types/node': 22.15.3
 
-  '@types/dotenv@8.2.3':
-    dependencies:
-      dotenv: 17.2.3
-
   '@types/estree@1.0.8': {}
 
   '@types/express-serve-static-core@5.1.0':
@@ -3449,6 +3497,8 @@ snapshots:
       supports-color: 7.2.0
 
   client-only@0.0.1: {}
+
+  cluster-key-slot@1.1.2: {}
 
   color-convert@2.0.1:
     dependencies:
@@ -4320,6 +4370,14 @@ snapshots:
   react-is@16.13.1: {}
 
   react@19.2.0: {}
+
+  redis@5.9.0:
+    dependencies:
+      '@redis/bloom': 5.9.0(@redis/client@5.9.0)
+      '@redis/client': 5.9.0
+      '@redis/json': 5.9.0(@redis/client@5.9.0)
+      '@redis/search': 5.9.0(@redis/client@5.9.0)
+      '@redis/time-series': 5.9.0(@redis/client@5.9.0)
 
   reflect.getprototypeof@1.0.10:
     dependencies:

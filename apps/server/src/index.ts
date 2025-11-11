@@ -5,9 +5,12 @@ import cors from "cors";
 import { v4 as uuidv4 } from 'uuid';
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import dotenv from "dotenv";
+import { createClient } from "redis";
 dotenv.config();
 
 const BUCKET = process.env.BUCKET;   
+const publisher = createClient();
+publisher.connect();
 
 
 const app = express();
@@ -38,6 +41,29 @@ app.get('/presign-upload', async (req: Request, res: Response) => {
             message: "internal server error"
         });
     }
+});
+
+app.post('/transcode', (req, res) => {
+    const {jobId, key}  = req.body;
+    if(!jobId || !key) res.status(422).json({
+        message: "required parameters are missing!"
+    });
+
+    const obj = {
+        jobId,
+        key
+    };
+
+    const serializedObj = JSON.stringify(obj);
+
+    publisher.rPush('job-queue', serializedObj);
+
+    //update the status in db
+
+    res.status(200).json({
+        message: "job pushed into the queue...", 
+        state: "pending"
+    });
 });
 
 
