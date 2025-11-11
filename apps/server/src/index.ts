@@ -4,17 +4,23 @@ import { s3client } from "./cloudflare.js";
 import cors from "cors";
 import { v4 as uuidv4 } from 'uuid';
 import { PutObjectCommand } from "@aws-sdk/client-s3";
+import dotenv from "dotenv";
+dotenv.config();
+
+const BUCKET = process.env.BUCKET;   
+
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.post('/presign-upload', async (req: Request, res: Response) => {
+app.get('/presign-upload', async (req: Request, res: Response) => {
     const jobId = uuidv4();
-    const key = `uploads/${jobId}.mp4`;
+    const key = `${jobId}.mp4`;
 
-    try{const command = new PutObjectCommand({
-    Bucket: "raw-videos-bucket",
+    try{
+    const command = new PutObjectCommand({
+    Bucket: BUCKET,
     Key: key,
     ContentType: "video/mp4",
   });
@@ -32,9 +38,7 @@ app.post('/presign-upload', async (req: Request, res: Response) => {
             message: "internal server error"
         });
     }
-
 });
-
 
 
 app.listen(3001, () => console.log("http up"));

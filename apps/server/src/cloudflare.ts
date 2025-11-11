@@ -6,7 +6,6 @@ const REGION = "auto";
 const R2_ENDPOINT = process.env.R2_URL;
 const ACCESS_KEY_ID = process.env.R2_ID;
 const SECRET_ACCESS_KEY = process.env.R2_SECRET;
-const BUCKET = process.env.BUCKET;   
 
 
 const s3client = new S3Client({
