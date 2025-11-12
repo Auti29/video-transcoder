@@ -98,7 +98,9 @@ async function pullAndTranscodeVideo({jobId, key}){
 }
     catch(err){
         console.log("error occured while pulling the raw video: ", err);
-        return;
+    }
+    finally{
+        process.exit(0);
     }
 }
 
