@@ -3,7 +3,15 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const docker = new Docker({ socketPath: "/var/run/docker.sock" });
+const DOCKER_HOST = process.env.DOCKER_HOST;
+const DOCKER_PORT = process.env.DOCKER_PORT;
+
+// const docker = new Docker({ socketPath: "/var/run/docker.sock" });
+
+const docker = new Docker({
+    host: DOCKER_HOST, 
+    port: DOCKER_PORT
+});
 
 interface workerI {
     id: string;
@@ -17,7 +25,8 @@ const spawnWorker = async () => {
         const container = await docker.createContainer({
             Image: process.env.WORKER_IMAGE || "worker-svc", 
             HostConfig: {
-                AutoRemove: true
+                AutoRemove: true, 
+                NetworkMode: "host"
             }
         });
 

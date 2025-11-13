@@ -66,7 +66,7 @@ async function pullAndTranscodeVideo({jobId, key}){
             .videoCodec("libx264")
             .audioCodec("aac")
             .outputOptions([`-vf scale=-2:${resolution.name}`])
-            .on('start', (cmd) => console.log(`Started transcoding ${resolution.name}p: ${cmd}`))
+            .on('start', (cmd) => console.log(`started transcoding ${resolution.name}p: ${cmd}`))
             .on('end', () => {
             (async () => {
                     try {
@@ -81,6 +81,7 @@ async function pullAndTranscodeVideo({jobId, key}){
                     console.log(`Finished and uploaded ${resolution.name}p`);
                     res({ resolution: resolution.name, outPath });
                     } catch (err) {
+                    console.log(`error occured while transcoding ${resolution.name}p video: `, err);
                     rej(err);
                     }
                 })();
@@ -97,7 +98,7 @@ async function pullAndTranscodeVideo({jobId, key}){
 
 }
     catch(err){
-        console.log("error occured while pulling the raw video: ", err);
+        console.log("error occured while pulling and transcoding the raw video: ", err);
     }
     finally{
         process.exit(0);

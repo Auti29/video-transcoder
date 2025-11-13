@@ -21,9 +21,9 @@ export const pollQueue = async () => {
             try{
                 const inspectData = await worker.container.inspect();
 
-                if(inspectData.State.Status != "running"){
+                if(inspectData.State.Status == "exited"){
                     runningWorkers.delete(worker);
-                    console.log(`worker with id ${worker.id} is stopped and deleted`);
+                    console.log(`worker with id ${worker.id} is stopped and dedleted`);
                 }
             
             }catch{
