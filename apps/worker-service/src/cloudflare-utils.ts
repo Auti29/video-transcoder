@@ -7,6 +7,7 @@ import { pipeline } from "node:stream/promises";
 import ffmpeg from "fluent-ffmpeg";
 import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
 import { Resolutions } from "./utils.js";
+import redis, { createClient } from "redis";
 
 ffmpeg.setFfmpegPath(ffmpegInstaller.path);
 
@@ -33,9 +34,24 @@ const s3client = new S3Client({
 });
 
 
+
+
 //@ts-ignore
 async function pullAndTranscodeVideo({jobId, key}){
     if(!jobId || !key) return;
+
+    const channel = `job_logs_${jobId}`;
+
+    const publisher = createClient();
+
+    publisher.on("error", (err) => console.error("Redis error:", err));
+    publisher.on("reconnecting", () => console.log("Reconnecting to Redis..."));
+
+
+    await publisher.connect();
+
+    await publisher.publish(channel, `spawned a docker container for job: ${jobId}`);
+
     
     const getCmd = new GetObjectCommand({
         Bucket: RAW_VIDEOS_BUCKET!, 
@@ -57,6 +73,7 @@ async function pullAndTranscodeVideo({jobId, key}){
     const fileStream = fs.createWriteStream(inputPath);
     await pipeline(body, fileStream);
 
+    await publisher.publish(channel, "transcoding started...");
 
     const transcodedfiles = Resolutions.map((resolution) => {
         return new Promise((res, rej) => {
@@ -66,7 +83,10 @@ async function pullAndTranscodeVideo({jobId, key}){
             .videoCodec("libx264")
             .audioCodec("aac")
             .outputOptions([`-vf scale=-2:${resolution.name}`])
-            .on('start', (cmd) => console.log(`started transcoding ${resolution.name}p: ${cmd}`))
+            .on('start', async (cmd) => {
+                console.log(`started transcoding ${resolution.name}p: ${cmd}`)
+                await publisher.publish(channel, `started transcoding ${resolution.name}p`);
+            })
             .on('end', () => {
             (async () => {
                     try {
@@ -79,15 +99,18 @@ async function pullAndTranscodeVideo({jobId, key}){
                     });
                     await s3client.send(putCmd);
                     console.log(`Finished and uploaded ${resolution.name}p`);
+                    await publisher.publish(channel, `Finished and uploaded ${resolution.name}p`);
                     res({ resolution: resolution.name, outPath });
                     } catch (err) {
                     console.log(`error occured while transcoding ${resolution.name}p video: `, err);
+                    await publisher.publish(channel, `error occured while transcoding ${resolution.name}p video`);
                     rej(err);
                     }
                 })();
             })
-            .on('error', (err) => {
+            .on('error', async (err) => {
             console.error(`Error transcoding ${resolution.name}p`, err);
+            await publisher.publish(channel, `Error transcoding ${resolution.name}p`);
             rej(err);
             })
             .save(outPath);
@@ -99,8 +122,11 @@ async function pullAndTranscodeVideo({jobId, key}){
 }
     catch(err){
         console.log("error occured while pulling and transcoding the raw video: ", err);
+        await publisher.publish(channel, `job: ${jobId} | status: FAILED!!!`);
     }
     finally{
+        await publisher.publish(channel, `job: ${jobId} | status: done`);
+        await publisher.quit();
         process.exit(0);
     }
 }

@@ -67,4 +67,40 @@ app.post('/transcode', (req, res) => {
 });
 
 
+app.get('/jobs/:jobId/logs/stream', async (req, res) => {
+    const {jobId} = req.params;
+
+    if(!jobId) return res.status(400).json({
+        message: `jobId parameter is not found`
+    });
+
+    const subscriber = publisher.duplicate();
+    await subscriber.connect();
+
+    const channel = `job_logs_${jobId}`;
+
+    //sse
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.flushHeaders();
+
+    console.log(`connected to log stream for job ${jobId}`);
+
+    await subscriber.subscribe(channel, (message) => {
+        res.write(`data: ${message}\n\n`);
+    });
+
+
+    req.on("close", async () => {
+        console.log(`disconnected job_logs for job ${jobId}`);
+        await subscriber.unsubscribe(channel);
+        await subscriber.quit();
+        res.end();
+    });
+
+
+});
+
+
 app.listen(3001, () => console.log("http up"));
