@@ -6,6 +6,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import dotenv from "dotenv";
 import { createClient } from "redis";
+import { prismaClient } from "@repo/db/client";
+
+
 dotenv.config();
 
 const BUCKET = process.env.BUCKET;   

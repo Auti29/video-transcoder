@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  email     String   @unique
+  username  String
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Video {
+  id             String   @id @default(uuid()) @db.Uuid
+  original_name  String
+  storage_bucket String
+  storage_name   String
+  size           BigInt
+  duration       Float?
+  mime_type      String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Job {
+  id                  String    @id @default(uuid()) @db.Uuid
+  status              JobStatus @default(PENDING)
+  worker_container_id String?
+  error_message       String?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+}
+
+model JobOutputs {
+  id             String   @id @default(uuid()) @db.Uuid
+  resolution     Int
+  file_size      BigInt
+  duration       Float
+  storage_key    String
+  storage_bucket String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+enum JobStatus {
+  QUEUED
+  PENDING
+  COMPLETED
+  FAILED
+}

@@ -22,5 +22,8 @@
     "express": "^5.1.0",
     "redis": "^5.9.0",
     "uuid": "^13.0.0"
+  }, 
+  "devDependencies": {
+    "@repo/db": "workspace:*"
   }
 }
