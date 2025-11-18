@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import dotenv from "dotenv";
 import { createClient } from "redis";
-import { prismaClient } from "@repo/db/client";
+import router from "./routes/userRoutes.js";
 
 
 dotenv.config();
@@ -19,6 +19,7 @@ publisher.connect();
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use('/api/user', router);
 
 app.get('/presign-upload', async (req: Request, res: Response) => {
     const jobId = uuidv4();

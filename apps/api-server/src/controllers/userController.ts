@@ -15,11 +15,13 @@ export const login = async (req: Request, res: Response) => {
     });
 
     try{
+        console.log(1);
         const user = await prismaClient.user.findFirst({
             where: {
                 username: username
             }
         });
+        console.log(2);
 
         if(!user) res.status(403).json({
             message: "user not found in db | invalid credentials!!"
