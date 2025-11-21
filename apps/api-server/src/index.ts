@@ -9,7 +9,6 @@ import { createClient } from "redis";
 import router from "./routes/userRoutes.js";
 import { prismaClient } from "@repo/db/client";
 
-
 dotenv.config();
 
 const BUCKET = process.env.BUCKET;   
