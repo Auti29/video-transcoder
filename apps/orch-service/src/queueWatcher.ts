@@ -31,7 +31,6 @@ export const pollQueue = async () => {
             }
         }
 
-
         while(queueLength > runningWorkers.size * threshold && runningWorkers.size < maxWorkers){
             await spawnWorker();
         }

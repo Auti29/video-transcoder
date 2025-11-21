@@ -7,6 +7,7 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 import dotenv from "dotenv";
 import { createClient } from "redis";
 import router from "./routes/userRoutes.js";
+import { prismaClient } from "@repo/db/client";
 
 
 dotenv.config();
@@ -34,10 +35,18 @@ app.get('/presign-upload', async (req: Request, res: Response) => {
 
     const uploadUrl = await getSignedUrl(s3client, command, { expiresIn: 3600 });
 
+    const newJob = await prismaClient.job.create({
+        data: {
+            presigned_job_id: jobId, 
+            status: "PENDING",    
+        }
+    });    
+
     res.status(200).json({
         uploadUrl, 
         key, 
-        jobId
+        jobId, 
+        currentJob: newJob.id
     });
     }catch(err){
         console.log("error occured while generating signed url: ", err);
@@ -47,26 +56,36 @@ app.get('/presign-upload', async (req: Request, res: Response) => {
     }
 });
 
-app.post('/transcode', (req, res) => {
-    const {jobId, key}  = req.body;
+app.post('/transcode', async (req, res) => {
+    const {jobId, key, currentJobId}  = req.body;
     if(!jobId || !key) res.status(422).json({
         message: "required parameters are missing!"
-    });
+    }); 
+
 
     const obj = {
         jobId,
-        key
+        key, 
+        currentJobId
     };
 
     const serializedObj = JSON.stringify(obj);
 
     publisher.rPush('job-queue', serializedObj);
 
-    //update the status in db
+    const currentJob = await prismaClient.job.update({
+        where: {
+            id: currentJobId
+        }, 
+        data: {
+            status: "QUEUED"
+        }
+    });
 
     res.status(200).json({
         message: "job pushed into the queue...", 
-        state: "pending"
+        status: "pending", 
+        currentJobId: currentJob.id
     });
 });
 
@@ -102,7 +121,6 @@ app.get('/jobs/:jobId/logs/stream', async (req, res) => {
         await subscriber.quit();
         res.end();
     });
-
 
 });
 

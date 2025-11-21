@@ -26,6 +26,6 @@
     "uuid": "^13.0.0"
   }, 
   "devDependencies": {
-        "@repo/db": "workspace:*"
+    "@repo/db": "workspace:*"
   }
 }

@@ -100,6 +100,7 @@ export type VideoScalarFieldEnum = (typeof VideoScalarFieldEnum)[keyof typeof Vi
 
 export const JobScalarFieldEnum = {
   id: 'id',
+  presigned_job_id: 'presigned_job_id',
   status: 'status',
   worker_container_id: 'worker_container_id',
   error_message: 'error_message',

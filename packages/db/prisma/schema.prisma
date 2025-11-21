@@ -31,6 +31,7 @@ model Video {
 
 model Job {
   id                  String    @id @default(uuid()) @db.Uuid
+  presigned_job_id    String?
   status              JobStatus @default(PENDING)
   worker_container_id String?
   error_message       String?

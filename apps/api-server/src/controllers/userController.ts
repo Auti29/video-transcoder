@@ -29,7 +29,7 @@ export const login = async (req: Request, res: Response) => {
 
         const secret = process.env.JWT_SECRET;
 
-        const token = jwt.sign({id: user.id}, secret!, {expiresIn: "12h"});
+        const token = jwt.sign({id: user!.id}, secret!, {expiresIn: "12h"});
 
         return res.status(200).json({
             message: "login done!!", 
@@ -43,6 +43,9 @@ export const login = async (req: Request, res: Response) => {
         });
     }
 }
+
+
+
 
 
 export const register = async (req: Request, res: Response) => {

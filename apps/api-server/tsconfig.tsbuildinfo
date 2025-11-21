@@ -1,1 +1,1 @@
-{"root":["./src/cloudflare.ts","./src/index.ts","./src/controllers/usercontroller.ts","./src/routes/userroutes.ts"],"version":"5.9.2"}
+{"root":["./src/cloudflare.ts","./src/index.ts","./src/controllers/usercontroller.ts","./src/routes/userroutes.ts"],"errors":true,"version":"5.9.2"}

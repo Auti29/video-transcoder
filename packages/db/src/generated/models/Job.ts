@@ -26,6 +26,7 @@ export type AggregateJob = {
 
 export type JobMinAggregateOutputType = {
   id: string | null
+  presigned_job_id: string | null
   status: $Enums.JobStatus | null
   worker_container_id: string | null
   error_message: string | null
@@ -35,6 +36,7 @@ export type JobMinAggregateOutputType = {
 
 export type JobMaxAggregateOutputType = {
   id: string | null
+  presigned_job_id: string | null
   status: $Enums.JobStatus | null
   worker_container_id: string | null
   error_message: string | null
@@ -44,6 +46,7 @@ export type JobMaxAggregateOutputType = {
 
 export type JobCountAggregateOutputType = {
   id: number
+  presigned_job_id: number
   status: number
   worker_container_id: number
   error_message: number
@@ -55,6 +58,7 @@ export type JobCountAggregateOutputType = {
 
 export type JobMinAggregateInputType = {
   id?: true
+  presigned_job_id?: true
   status?: true
   worker_container_id?: true
   error_message?: true
@@ -64,6 +68,7 @@ export type JobMinAggregateInputType = {
 
 export type JobMaxAggregateInputType = {
   id?: true
+  presigned_job_id?: true
   status?: true
   worker_container_id?: true
   error_message?: true
@@ -73,6 +78,7 @@ export type JobMaxAggregateInputType = {
 
 export type JobCountAggregateInputType = {
   id?: true
+  presigned_job_id?: true
   status?: true
   worker_container_id?: true
   error_message?: true
@@ -155,6 +161,7 @@ export type JobGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type JobGroupByOutputType = {
   id: string
+  presigned_job_id: string | null
   status: $Enums.JobStatus
   worker_container_id: string | null
   error_message: string | null
@@ -185,6 +192,7 @@ export type JobWhereInput = {
   OR?: Prisma.JobWhereInput[]
   NOT?: Prisma.JobWhereInput | Prisma.JobWhereInput[]
   id?: Prisma.UuidFilter<"Job"> | string
+  presigned_job_id?: Prisma.StringNullableFilter<"Job"> | string | null
   status?: Prisma.EnumJobStatusFilter<"Job"> | $Enums.JobStatus
   worker_container_id?: Prisma.StringNullableFilter<"Job"> | string | null
   error_message?: Prisma.StringNullableFilter<"Job"> | string | null
@@ -194,6 +202,7 @@ export type JobWhereInput = {
 
 export type JobOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  presigned_job_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   worker_container_id?: Prisma.SortOrderInput | Prisma.SortOrder
   error_message?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -206,6 +215,7 @@ export type JobWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.JobWhereInput | Prisma.JobWhereInput[]
   OR?: Prisma.JobWhereInput[]
   NOT?: Prisma.JobWhereInput | Prisma.JobWhereInput[]
+  presigned_job_id?: Prisma.StringNullableFilter<"Job"> | string | null
   status?: Prisma.EnumJobStatusFilter<"Job"> | $Enums.JobStatus
   worker_container_id?: Prisma.StringNullableFilter<"Job"> | string | null
   error_message?: Prisma.StringNullableFilter<"Job"> | string | null
@@ -215,6 +225,7 @@ export type JobWhereUniqueInput = Prisma.AtLeast<{
 
 export type JobOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  presigned_job_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   worker_container_id?: Prisma.SortOrderInput | Prisma.SortOrder
   error_message?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -230,6 +241,7 @@ export type JobScalarWhereWithAggregatesInput = {
   OR?: Prisma.JobScalarWhereWithAggregatesInput[]
   NOT?: Prisma.JobScalarWhereWithAggregatesInput | Prisma.JobScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"Job"> | string
+  presigned_job_id?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
   status?: Prisma.EnumJobStatusWithAggregatesFilter<"Job"> | $Enums.JobStatus
   worker_container_id?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
   error_message?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
@@ -239,6 +251,7 @@ export type JobScalarWhereWithAggregatesInput = {
 
 export type JobCreateInput = {
   id?: string
+  presigned_job_id?: string | null
   status?: $Enums.JobStatus
   worker_container_id?: string | null
   error_message?: string | null
@@ -248,6 +261,7 @@ export type JobCreateInput = {
 
 export type JobUncheckedCreateInput = {
   id?: string
+  presigned_job_id?: string | null
   status?: $Enums.JobStatus
   worker_container_id?: string | null
   error_message?: string | null
@@ -257,6 +271,7 @@ export type JobUncheckedCreateInput = {
 
 export type JobUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  presigned_job_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
   worker_container_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   error_message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -266,6 +281,7 @@ export type JobUpdateInput = {
 
 export type JobUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  presigned_job_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
   worker_container_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   error_message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -275,6 +291,7 @@ export type JobUncheckedUpdateInput = {
 
 export type JobCreateManyInput = {
   id?: string
+  presigned_job_id?: string | null
   status?: $Enums.JobStatus
   worker_container_id?: string | null
   error_message?: string | null
@@ -284,6 +301,7 @@ export type JobCreateManyInput = {
 
 export type JobUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  presigned_job_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
   worker_container_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   error_message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -293,6 +311,7 @@ export type JobUpdateManyMutationInput = {
 
 export type JobUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  presigned_job_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumJobStatusFieldUpdateOperationsInput | $Enums.JobStatus
   worker_container_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   error_message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -302,6 +321,7 @@ export type JobUncheckedUpdateManyInput = {
 
 export type JobCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  presigned_job_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   worker_container_id?: Prisma.SortOrder
   error_message?: Prisma.SortOrder
@@ -311,6 +331,7 @@ export type JobCountOrderByAggregateInput = {
 
 export type JobMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  presigned_job_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   worker_container_id?: Prisma.SortOrder
   error_message?: Prisma.SortOrder
@@ -320,6 +341,7 @@ export type JobMaxOrderByAggregateInput = {
 
 export type JobMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  presigned_job_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   worker_container_id?: Prisma.SortOrder
   error_message?: Prisma.SortOrder
@@ -335,6 +357,7 @@ export type EnumJobStatusFieldUpdateOperationsInput = {
 
 export type JobSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  presigned_job_id?: boolean
   status?: boolean
   worker_container_id?: boolean
   error_message?: boolean
@@ -344,6 +367,7 @@ export type JobSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
 
 export type JobSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  presigned_job_id?: boolean
   status?: boolean
   worker_container_id?: boolean
   error_message?: boolean
@@ -353,6 +377,7 @@ export type JobSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
 
 export type JobSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  presigned_job_id?: boolean
   status?: boolean
   worker_container_id?: boolean
   error_message?: boolean
@@ -362,6 +387,7 @@ export type JobSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
 
 export type JobSelectScalar = {
   id?: boolean
+  presigned_job_id?: boolean
   status?: boolean
   worker_container_id?: boolean
   error_message?: boolean
@@ -369,13 +395,14 @@ export type JobSelectScalar = {
   updatedAt?: boolean
 }
 
-export type JobOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "status" | "worker_container_id" | "error_message" | "createdAt" | "updatedAt", ExtArgs["result"]["job"]>
+export type JobOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "presigned_job_id" | "status" | "worker_container_id" | "error_message" | "createdAt" | "updatedAt", ExtArgs["result"]["job"]>
 
 export type $JobPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Job"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    presigned_job_id: string | null
     status: $Enums.JobStatus
     worker_container_id: string | null
     error_message: string | null
@@ -805,6 +832,7 @@ export interface Prisma__JobClient<T, Null = never, ExtArgs extends runtime.Type
  */
 export interface JobFieldRefs {
   readonly id: Prisma.FieldRef<"Job", 'String'>
+  readonly presigned_job_id: Prisma.FieldRef<"Job", 'String'>
   readonly status: Prisma.FieldRef<"Job", 'JobStatus'>
   readonly worker_container_id: Prisma.FieldRef<"Job", 'String'>
   readonly error_message: Prisma.FieldRef<"Job", 'String'>
