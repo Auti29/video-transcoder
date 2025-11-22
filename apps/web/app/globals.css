@@ -1,4 +1,13 @@
-:root {
+@import "tailwindcss";
+
+
+@theme {
+  --font-logo: "Playwrite NZ Guides", cursive;
+  --font-apple: "Homemade Apple", cursive;
+}
+
+
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -47,4 +56,4 @@ a {
   .imgDark {
     display: unset;
   }
-}
+} */
