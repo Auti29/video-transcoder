@@ -12,44 +12,69 @@ export default function Login() {
         <MainGrid>
             <div className="h-full w-full grid grid-cols-10">
                 <div className="col-span-6 flex flex-col justify-center items-center">
-                    <div className="w-[85%] flex-1 border border-t-0 border-b-0"></div>
-                    <div className="text-[25px] font-bold font-mono border w-full text-center border-l-0 border-r-0 ">
-                        <span className="border inline-block border-t-0 border-b-0  w-[85%]">
-                            <span className="w-full h-full inline-block outline outline-black rounded-3xl bg-black text-white">Transcode and serve vidoes at scale with transcodeX</span>
-                        </span>
-                    </div>
-                    <div className="w-[85%] h-10 border border-t-0 border-b-0"></div>
-                    <div className=" border flex w-full justify-center items-center border-l-0 border-r-0">
-                        <div className="font-mono text-center w-[85%] border border-t-0 border-b-0">
-                            <p className="bg-white outline rounded-4xl p-3">
-                                Convert videos into any format in seconds. Our cloud-powered transcoding engine delivers high-quality output with optimized performance, no matter the file size or resolution.
-                            </p>
-                            
+                    <div className="flex-1 flex border-0 justify-between items-center px-5 w-full ">
+                        <div className=" border border-r-0 border-gray-500 h-full w-[50%] border-t-0 border-b-0 ">
                         </div>
+                        <div className="flex flex-col justify-center items-center border border-gray-500 h-full w-[50%] border-t-0 border-b-0 p-2"></div>
                     </div>
-                    <div className="w-[85%] flex justify-center h-5 border border-t-0 border-b-0">
-                        <div className="w-10 border border-t-0 border-b-0"></div>
-                        <div className="w-10 border border-t-0 border-b-0 border-l-0"></div>
-                    </div>
-                    <div className="border w-full flex justify-center items-center border-l-0 border-r-0">
-                        <div className="w-[85%] border border-t-0 border-b-0  flex justify-center items-center">
-                        <button className="w-10 h-10 border border-t-0 border-b-0 flex justify-center items-center cursor-pointer hover:bg-gray-500 ">
-                            <FaArrowLeft /> 
-                        </button>
-                        <button className="w-10 h-10 border border-t-0 border-b-0 border-l-0 flex justify-center items-center cursor-pointer hover:bg-gray-500">
-                            <FaArrowRight /> 
-                        </button>
-                    </div>
-                    </div>
-                    <div className="w-[85%] flex-1 border border-t-0 border-b-0 flex justify-center  items-center">
-                        <div className="w-10 h-full border border-t-0 border-b-0"></div>
-                        <div className="w-10 h-full border border-t-0 border-b-0 border-l-0"></div>
 
+                    <div className="flex w-full border border-l-0 border-r-0 border-b-0 border-gray-500 justify-between items-center ">
+                        <div className="w-5 h-full bg-amber-400"></div>
+                        <div className=" border border-r-0 border-gray-500 h-full w-[50%] border-t-0 border-b-0">
+                            <div className="rounded-r-[35px] outline outline-gray-500 bg-gray60 text-white flex flex-col justify-center items-center h-full w-full px-5 py-9">
+                            <h2 className="font-bold text-lg">Parallel Processing at Scale</h2>
+                            <p className="text-sm text-center text-[#adb9c6] px-3">
+                                Your videos are processed by automatically scaled worker nodes. Whether you upload one video or a thousand, our system ensures consistent speed and reliability.                        
+                            </p>
+                            </div>
+                        </div>
+
+                        <div className=" border border-gray-500 h-full w-[50%] border-t-0 border-b-0 ">
+                        <div className="rounded-l-[35px] outline outline-gray-500 bg-gray60 text-white flex flex-col justify-center items-center h-full w-full px-5 py-9">
+                            <h2 className="font-bold text-lg">Upload Once, Deliver Everywhere</h2>
+                            <p className="text-sm text-center text-[#adb9c6] px-3">
+                                Transcode to MP4, HLS, DASH, or custom presets. Get playback-ready URLs that work seamlessly across all devices, platforms, and networks.                        
+                            </p>    
+                        </div>
+                        </div>
+                        <div className="w-5 h-full bg-[#00be43]"></div>
+
+                    </div>
+
+
+                    <div className="flex w-full border border-l-0 border-r-0 border-gray-500 justify-between items-center">
+                        <div className="w-5 h-full bg-[#0072e3]"></div>
+
+                        <div className=" border border-r-0 border-gray-500 h-full w-[50%] border-t-0 border-b-0">
+                            <div className="rounded-r-[35px] outline outline-gray-500 bg-gray60 text-white flex flex-col justify-center items-center h-full w-full px-5 py-9">
+                            <h2 className="font-bold text-lg">Real-Time Status Tracking </h2>
+                            <p className="text-sm text-center text-[#adb9c6] px-3">
+                                    Monitor your transcoding jobs in real time. From upload to processing to completion you know exactly where each video stands.    
+                            </p>
+
+                            </div>
+                        </div>
+                        <div className=" border border-gray-500 h-full w-[50%] border-t-0 border-b-0 ">
+                            <div className="rounded-l-[35px] outline outline-gray-500 bg-gray60 text-white flex flex-col justify-center items-center h-full w-full px-5 py-9">
+                            <h2 className="font-bold text-lg">Developer-Friendly API</h2>
+                            <p className="text-sm text-center text-[#adb9c6] px-3">
+                                Easily integrate video transcoding into your apps with a clean, modern REST API. Queue jobs, track progress, and retrieve URLs with just a few lines of code.                        
+                            </p>
+                            </div>
+                        </div>
+                        <div className="w-5 h-full bg-[#CF2017]"></div>
+
+                    </div>
+
+                     <div className="flex-1 flex border-0 justify-between items-center px-5 w-full ">
+                        <div className=" border border-r-0 border-gray-500 h-full w-[50%] border-t-0 border-b-0">
+                        </div>
+                        <div className="flex flex-col justify-center items-center border border-gray-500 h-full w-[50%] border-t-0 border-b-0 p-2"></div>
                     </div>
                 </div>
 
-                <div className="col-span-4 border-l-[0.5px]  border-black ">
-                    <div className="bg-white outline-[0.5px] outline-black rounded-[50px] h-full w-full flex flex-col items-center justify-center">
+                <div className="col-span-4 border-l-[0.5px]  border-gray-500 ">
+                    <div className="bg-white outline-[0.5px] outline-gray-500 rounded-[50px] h-full w-full flex flex-col items-center justify-center">
                         <div className=" flex flex-col items-center w-[90%]">
                             <Logo size="xl"/>
                             <h4 className="text-xl mt-6 font-bold mb-1 font-sans">Log in to your account</h4>
