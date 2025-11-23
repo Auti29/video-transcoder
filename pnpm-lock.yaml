@@ -75,6 +75,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@fontsource/gugi':
+        specifier: ^5.2.7
+        version: 5.2.7
       '@fontsource/homemade-apple':
         specifier: ^5.2.8
         version: 5.2.8
@@ -506,6 +509,9 @@ packages:
     resolution: {integrity: sha512-Drt5u2vzDnIONf4ZEkKtFlbvwj6rI3kxw1Ck9fpudmtgaZIHD4ucsWB2lCZBXRxJgXR+2IMSti+4rtM4C4rXgg==}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource/gugi@5.2.7':
+    resolution: {integrity: sha512-trYfvxY5vu+YqNjIFt83bx0syqJGI8zUYWpBxwgGYlFUqQKXlKZJWsEangQN8A4Hn7Ggsz0oh/6lry0MxS3xiA==}
 
   '@fontsource/homemade-apple@5.2.8':
     resolution: {integrity: sha512-xFLXqk+q16Xt2UReeuWfKxdl2HawXJJyRMrsh6w3LZbKwpKcM0M5Nwi+npsDC3fzZQECSLzRnR+IECQqTWXfCA==}
@@ -3923,6 +3929,8 @@ snapshots:
 
   '@ffmpeg-installer/win32-x64@4.1.0':
     optional: true
+
+  '@fontsource/gugi@5.2.7': {}
 
   '@fontsource/homemade-apple@5.2.8': {}
 

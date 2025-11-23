@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@fontsource/playwrite-nz-guides"; 
 import "@fontsource/homemade-apple";
+import "@fontsource/gugi";      
 import "./globals.css";
 
 const geistSans = localFont({

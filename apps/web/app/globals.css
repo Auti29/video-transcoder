@@ -4,7 +4,13 @@
 @theme {
   --font-logo: "Playwrite NZ Guides", cursive;
   --font-apple: "Homemade Apple", cursive;
+  --font-gugi: "Gugi", cursive;
+  --color-gray30:  #B2BAC2;
+  --color-gray40: #98A3AE;
+  --color-gray50:  #565E67;
+  --color-gray60: #242628;
 }
+
 
 
 /* :root {
