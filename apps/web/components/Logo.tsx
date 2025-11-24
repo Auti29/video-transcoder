@@ -1,19 +1,13 @@
 
-type sizeOptions = "sm" | "md" | "lg" | "xl" | "2xl";
+type sizeOptions = "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
 
-const selectSize: Record<sizeOptions, string> = {
-    "sm": "10px",
-    "md": "15px", 
-    "lg": "20px", 
-    "xl": "25px", 
-    "2xl": "30px"
-}
+
 
 
 export default function Logo({size}: {size: sizeOptions}) {
     return(
         <div className="flex">
-            <h2 className={`font-gugi text-[${selectSize[size]}] font-bold`}>transcodeX</h2>
+            <h2 className={`font-gugi text-${size} font-bold`}>transcodeX</h2>
         </div>
     );
 }

@@ -1,7 +1,8 @@
 import AuthBaseGrid from "../../../components/AuthBaseGrid";
 
-export default function Login() {
+
+export default function signup() {
     return (
-        <AuthBaseGrid page="login"/>
+        <AuthBaseGrid page="signup"/>
     )
 }
