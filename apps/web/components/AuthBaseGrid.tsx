@@ -4,7 +4,8 @@ import MainGrid from "./MainGrid";
 import Logo from "./Logo";
 import AuthBtn from "./AuthBtn";
 import Input from "./Input";
-import AuthSubmitBtn from "./AuthSubmitBtn";
+import AuthSubmitBtn from "./ActionBtn";
+import ActionBtn from "./ActionBtn";
 
 
 type AuthPageType = "login" | "signup";
@@ -121,7 +122,7 @@ export default function AuthBaseGrid({page}: AuthBaseGridI) {
                             }
                             </div>
                             <div className="w-[58%]">
-                            <AuthSubmitBtn text="continue"/>
+                            <ActionBtn text="continue"/>
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,7 @@ export default function DashboardNavbar(){
     return(
         <div className="flex w-full bg-gray60 h-15 items-center text-white px-5 justify-between">
             <div className="flex items-center text-center">
-                <Logo size="3xl" color="white"/>
+                <Logo size="2xl" color="white"/>
                 <span className="text-[29px] mx-4 mb-1 text-gray40">/</span>
                 <span className="flex items-center">
                 <GoOrganization className="mr-2"/> 
