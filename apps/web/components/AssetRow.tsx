@@ -3,7 +3,7 @@ import { TfiVideoClapper } from "react-icons/tfi";
 
 export default function AssetRow() {
     return (
-        <div className="w-full grid grid-cols-12 mt-3 pb-3 border-b border-gray30">
+        <div className="w-full grid grid-cols-12 pt-4 pb-4 border-b border-gray30 cursor-pointer hover:bg-gray-200">
             <div className="col-span-1 text-center flex w-full justify-center items-center text-gray50">
                 <TfiVideoClapper size={20}/>
             </div>
