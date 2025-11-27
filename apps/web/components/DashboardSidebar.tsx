@@ -9,6 +9,8 @@ import { MdErrorOutline, MdOutlineNetworkCheck } from "react-icons/md";
 import { PiGraph, PiTimer } from "react-icons/pi";
 import { RiFileHistoryLine } from "react-icons/ri";
 import SidebarComp from "./SidebarComp";
+import { FaCode, FaCodepen } from "react-icons/fa";
+import { IoIosCode } from "react-icons/io";
 
 export default function DashboardSidebar() {
     // const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -21,9 +23,12 @@ export default function DashboardSidebar() {
                     <SidebarComp label="Assets">
                         <IoVideocamOutline size={23} />
                     </SidebarComp>
-                    {/* <SidebarComp label="History">
-                        <RiFileHistoryLine size={23} />  
-                    </SidebarComp> */}
+                    <SidebarComp label="Components">
+                        <IoIosCode size={23} />
+                    </SidebarComp>
+                    <SidebarComp label="Add to your app">
+                        <FaCodepen size={21} />
+                    </SidebarComp>
                      
                 </div>
             </div>

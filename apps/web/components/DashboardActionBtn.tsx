@@ -9,7 +9,7 @@ interface DashboardActionBtnI {
 
 export default function DashboardActionBtn({label, marc}: DashboardActionBtnI) {
     return(
-        <button className={`hover:rounded-none transition-all duration-300 cursor-pointer px-6 py-4 font-semibold rounded-3xl w-full h-full text-center ${(!marc || marc==="marc-1") ? " bg-[#0072e3] border-0 text-white" : " bg-blue-300"} ${marc === "marc-2" && " border-3 text-black border-[#0072e3]"}`}>
+        <button className={` text-sm hover:rounded-none transition-all duration-300 cursor-pointer px-6 py-4 font-semibold rounded-3xl w-full h-full text-center border-0 ${(!marc || marc==="marc-1") ? " bg-[#0072e3] text-white" : " bg-amber-400"} ${marc === "marc-2" && " text-black"}`}>
             {label}
         </button>
     );
