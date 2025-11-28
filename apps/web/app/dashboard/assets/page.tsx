@@ -8,7 +8,7 @@ import AddAsset from "../../../components/AddAsset";
 
 
 export default function AssetsPage() {
-    const [isModalopen, setIsModalopen] = useState<boolean>(true);
+    const [isModalopen, setIsModalopen] = useState<boolean>(false);
     const modalRef = useRef<HTMLDivElement>(null);
     const parentRef = useRef<HTMLDivElement>(null);
 
@@ -23,7 +23,7 @@ export default function AssetsPage() {
                 <DashboardSidebar />
                 </div>
                 
-                {/* main comp */}
+                
                 <div className="col-span-17 pt-5 px-8">
                     <div className="flex w-full items-center justify-between">
                         <h2 className="text-2xl font-bold font-sans text-gray60 ml-1">ASSETS</h2>
@@ -33,7 +33,7 @@ export default function AssetsPage() {
                             </div>
                             <div className="col-span-7 border-l border-r border-gray30  flex justify-center items-center h-full py-2 ">
                                 <span className="border-t border-b border-gray30 w-full">
-                                <DashboardActionBtn label="Create new asset"/>
+                                <DashboardActionBtn label="Create new asset" setState={setIsModalopen}/>
                                 </span>
                             </div>
                             <div className="col-span-7  flex border-r border-gray30 justify-center items-center h-full py-2 ">
