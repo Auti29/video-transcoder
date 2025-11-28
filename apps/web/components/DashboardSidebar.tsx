@@ -8,9 +8,7 @@ import { CiBeaker1, CiMicrochip, CiNoWaitingSign, CiPalette, CiWavePulse1 } from
 import { usePathname } from "next/navigation";
 
 export default function DashboardSidebar() {
-    // const [isHovered, setIsHovered] = useState<boolean>(false);
-    const pathname = usePathname()
-    console.log(pathname);
+    
 
     return (
         <div className={`h-full w-full bg-[#ecede8] border-r border-gray-400 text-gray60 py-5 group text-sm`}>
@@ -66,17 +64,21 @@ export default function DashboardSidebar() {
             <div className="pl-6">
                 <h3 className="text-[13px] font-bold">OTHER</h3>
                 <div className="flex flex-col justify-center items-baseline w-fit pt-3 text-[#53585d]">
-                       <SidebarComp label="Documentation">
+                       <Link href={'/docs'}>
+                            <SidebarComp label="Documentation">
                             <CiPalette size={25}/>
                        </SidebarComp>
+                       </Link>
                         <Link href={'https://github.com/Auti29/video-transcoder'} target="_blank">
                             <SidebarComp label="Contribute">
                                 <VscGithubAlt size={23} />
                             </SidebarComp>
                         </Link>
-                       <SidebarComp label="Report bug">
+                       <Link href={'/dashboard/report'}>
+                        <SidebarComp label="Report bug">
                             <PiBugBeetleLight size={23}/> 
                        </SidebarComp>
+                       </Link>
                 </div>
             </div>
         </div>

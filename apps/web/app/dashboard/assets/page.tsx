@@ -19,7 +19,7 @@ export default function AssetsPage() {
         <div className=" h-full w-full flex flex-col overflow-hidden">
             <DashboardNavbar />
             <div className="flex-1 overflow-hidden grid grid-cols-18 ">
-                <div className="col-span-1 hover:w-48 transition-all duration-300 ease-in-out z-20">
+                <div className="col-span-1 hover:w-50 transition-all duration-300 ease-in-out z-20">
                 <DashboardSidebar />
                 </div>
                 
