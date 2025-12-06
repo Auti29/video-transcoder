@@ -4,10 +4,12 @@ import { PiVideoLight } from "react-icons/pi";
 
 export default function UploadComp({
     setState, 
-    setFile
+    setFile, 
+    setCurrpage
 }: {
     setState: Dispatch<SetStateAction<string | null>>, 
-    setFile: Dispatch<SetStateAction<File | null>>
+    setFile: Dispatch<SetStateAction<File | null>>, 
+    setCurrpage: Dispatch<SetStateAction<number>>
 }) {
 
     function handleFileUpload(e: ChangeEvent<HTMLInputElement>) {
@@ -15,6 +17,7 @@ export default function UploadComp({
             const file: File = e.target.files[0];
             setState(URL.createObjectURL(file));
             setFile(file);
+            setCurrpage(2);
         }else{
             setState(null);
             setFile(null);

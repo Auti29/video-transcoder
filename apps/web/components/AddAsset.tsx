@@ -3,6 +3,7 @@ import { RefObject, useState } from "react";
 import { PiVideoLight } from "react-icons/pi";
 import UploadComp from "./UploadComp";
 import { MdDone } from "react-icons/md";
+import DetailsComp from "./DetailsComp";
 
 interface AddAssetI {
     ref: RefObject<HTMLDivElement | null>;
@@ -11,7 +12,7 @@ interface AddAssetI {
 export default function AddAsset({ref}: AddAssetI) {
     const [selectedVideoUrl, setSelectedVideoUrl] = useState<string | null>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
-    const [currpage, setCurrpage] = useState(1);
+    const [currpage, setCurrpage] = useState(2);
 
 
     return(
@@ -43,7 +44,12 @@ export default function AddAsset({ref}: AddAssetI) {
             {
                 currpage === 1 
                 &&
-                <UploadComp setState={setSelectedVideoUrl} setFile={setSelectedFile}/>
+                <UploadComp setState={setSelectedVideoUrl} setFile={setSelectedFile} setCurrpage={setCurrpage}/>
+            }
+            {
+                currpage === 2 
+                &&
+                <DetailsComp assetFile = {selectedFile} setCurrpage={setCurrpage} videoUrl = {selectedVideoUrl} />
             }
         
         </div>

@@ -1,6 +1,6 @@
 "use client";
 import { IoEyeOutline, IoEyeSharp, IoVideocamOutline } from "react-icons/io5";
-import { PiBugBeetleLight, PiCodeLight, PiCodepenLogoLight, PiGraph, PiGraphLight, PiStackLight, PiTimer, PiVideoLight } from "react-icons/pi";
+import { PiBugBeetleLight, PiCodeLight, PiCodepenLogoLight, PiEyeLight, PiGraph, PiGraphLight, PiStackLight, PiTimer, PiVideoLight } from "react-icons/pi";
 import SidebarComp from "./SidebarComp";
 import Link from "next/link";
 import { VscGithubAlt } from "react-icons/vsc";
@@ -44,7 +44,7 @@ export default function DashboardSidebar() {
                     </Link>
                     <Link href={'/dashboard/data/views'}>
                         <SidebarComp label="Views">
-                            <IoEyeOutline size={23} />
+                            <PiEyeLight size={23} />
                         </SidebarComp>
                     </Link>
                     <Link href={'/dashboard/data/metrics'}>
